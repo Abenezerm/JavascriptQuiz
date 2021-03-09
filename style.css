@@ -1,8 +1,17 @@
 .container{
   text-align: center;
 }
-.Answer-button{
+.btn{
   margin: 5px 5px 5px 5px;
+}
+#answer-buttons{
+  display: inline-grid;
+}
+.correct{
+  background-color: green;
+}
+.incorrect{
+  background-color: red;
 }
 .hide{
   display: none;
