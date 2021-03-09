@@ -2,6 +2,7 @@ const startButton = document.getElementById('start-Button');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('questions');
 const answerButtonsElement = document.getElementById('answer-buttons');
+const userScore = document.getElementById('score');
 let randomQuestion;
 let currentQuestion;
 let score = 0;
@@ -10,6 +11,7 @@ startButton.addEventListener('click', startQuiz)
 function startQuiz(){
   //hides the start button and reveals the hiddent questions when start button is pressed...
   startButton.classList.add('hide')
+  userScore.innerText = score
   questionContainerElement.classList.remove('hide')
   randomQuestion = questions.sort(() => Math.random() - .5)
   currentQuestion = 0
@@ -27,6 +29,8 @@ function showQuestion(question){
     const button  = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
+    button.classList.remove('correct')
+    button.classList.remove('incorrect')
     if (answer.correct){
       button.dataset.correct = answer.correct
     }
@@ -48,15 +52,29 @@ function selectAnswer(e){
   if (correct){
     selectedButton.classList.add('correct')
     score ++
+    userScore.innerText = score
     console.log(score)
+
   }else{
     selectedButton.classList.add('incorrect')
+
   }
+  if(randomQuestion.length > currentQuestion + 1){
+    setTimeout(next, 500)
+  }else{
+    startButton.innerText = 'restart'
+    startButton.classList.remove('hide')
+    questionContainerElement.classList.add('hide')
+  }
+
 }
 
-function result(element, correct){
 
+function next(){
+  currentQuestion++
+  getNextQuestion()
 }
+
 
 const questions = [
   { question:  'What is the HTML tag under which one can write the JavaScript code?',
