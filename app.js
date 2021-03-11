@@ -1,20 +1,26 @@
 const startButton = document.getElementById('start-Button');
 const questionContainerElement = document.getElementById('question-container');
+const welcomeMsgContainerElement = document.getElementById('welcome-msg')
 const questionElement = document.getElementById('questions');
 const answerButtonsElement = document.getElementById('answer-buttons');
+const submitFormElement = document.getElementById('add-score');
+const submitButton = document.getElementById('submit-Button');
 const userScore = document.getElementById('score');
 let randomQuestion;
 let currentQuestion;
 let score = 0;
 startButton.addEventListener('click', startQuiz)
-
+submitButton.addEventListener('click', addHighScore)
 function startQuiz(){
   //hides the start button and reveals the hiddent questions when start button is pressed...
   startButton.classList.add('hide')
   userScore.innerText = score
   questionContainerElement.classList.remove('hide')
+  welcomeMsgContainerElement.classList.add('hide')
   randomQuestion = questions.sort(() => Math.random() - .5)
   currentQuestion = 0
+  score = 0
+  userScore.innerText = score
   getNextQuestion()
 }
 
@@ -62,13 +68,22 @@ function selectAnswer(e){
   if(randomQuestion.length > currentQuestion + 1){
     setTimeout(next, 500)
   }else{
+    localStorage.setItem('FinalScore', score)
+    questionContainerElement.classList.add('hide')
+    submitFormElement.classList.remove('hide')
     startButton.innerText = 'restart'
     startButton.classList.remove('hide')
-    questionContainerElement.classList.add('hide')
+    submitButton.classList.remove('hide')
+
+    var final = localStorage.getItem('FinalScore')
+    console.log(final)
+
   }
 
 }
-
+function addHighScore(){
+  
+}
 
 function next(){
   currentQuestion++
