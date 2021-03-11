@@ -6,11 +6,20 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 const submitFormElement = document.getElementById('add-score');
 const submitButton = document.getElementById('submit-Button');
 const userScore = document.getElementById('score');
+const username = document.getElementById('user-name')
 let randomQuestion;
 let currentQuestion;
 let score = 0;
 startButton.addEventListener('click', startQuiz)
 submitButton.addEventListener('click', addHighScore)
+
+var scoreboard = [
+  {name: ' ', score: ''}
+]
+
+
+
+
 function startQuiz(){
   //hides the start button and reveals the hiddent questions when start button is pressed...
   startButton.classList.add('hide')
@@ -81,8 +90,14 @@ function selectAnswer(e){
   }
 
 }
+
+
 function addHighScore(){
-  
+  localStorage.setItem('UserName', username.value)
+  username.value = ''
+  submitFormElement.classList.add('hide')
+  submitButton.classList.add('hide')
+  startQuiz()
 }
 
 function next(){
