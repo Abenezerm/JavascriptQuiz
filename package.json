@@ -1,0 +1,26 @@
+{
+  "name": "JavascriptQuiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abenezerm/JavascriptQuiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abenezerm/JavascriptQuiz/issues"
+  },
+  "homepage": "https://github.com/Abenezerm/JavascriptQuiz#readme",
+  "dependencies": {
+    "tailwindcss": "^3.0.11"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.5"
+  }
+}

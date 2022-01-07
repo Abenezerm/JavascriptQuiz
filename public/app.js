@@ -7,9 +7,12 @@ const submitFormElement = document.getElementById('add-score');
 const submitButton = document.getElementById('submit-Button');
 const userScore = document.getElementById('score');
 const username = document.getElementById('user-name')
+
 let randomQuestion;
 let currentQuestion;
 let score = 0;
+
+
 startButton.addEventListener('click', startQuiz)
 submitButton.addEventListener('click', addHighScore)
 
